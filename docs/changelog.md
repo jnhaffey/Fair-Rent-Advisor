@@ -18,6 +18,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - JSON serialization support for Cosmos DB compatibility
   - Implicit type conversions for better developer experience
 
+- **Core Entities Implementation (Phase 2B)**:
+  - `Property` entity with complete domain model for rental properties
+  - `MarketData` entity for rental market analysis and statistics
+  - Supporting models: `Coordinates`, `TransportLink`, `PriceTrend`
+  - Business logic methods for property availability, transport analysis, and market calculations
+  - Cosmos DB partition key strategies for efficient data storage
+  - JSON serialization with proper attribute mapping for Azure Cosmos DB
+  - Comprehensive test coverage with 55 entity tests (94 total tests passing)
+  - Enhanced TestDataBuilder with sample entity creation methods
+
 - **Developer Experience Enhancements (Post-Review)**:
   - Cross-platform development scripts in `scripts/` directory:
     - `start-local.sh/.bat` - Local development environment setup
