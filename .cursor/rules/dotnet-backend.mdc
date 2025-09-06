@@ -1,0 +1,71 @@
+---
+description: .NET 8 backend development standards for Azure Functions
+globs: ["src/FairRentAdvisor.Api/**/*", "src/FairRentAdvisor.Core/**/*", "src/FairRentAdvisor.Infrastructure/**/*", "**/*.cs"]
+alwaysApply: false
+---
+
+# .NET Backend Development Rules
+
+## Project Structure
+- Follow Clean Architecture: Core (domain) → Infrastructure → API
+- Use dependency injection for all services
+- Implement repository pattern for data access
+- Separate concerns between controllers, services, and repositories
+
+## Coding Standards
+- Use C# 12 language features appropriately
+- Follow Microsoft C# coding conventions
+- Use nullable reference types consistently
+- Implement async/await patterns for I/O operations
+- Use record types for DTOs and value objects
+- Use primary constructors where appropriate
+
+## Azure Functions Specific
+- Use isolated worker model (not in-process)
+- Keep functions thin - delegate to services
+- Use proper binding attributes
+- Implement proper logging with ILogger
+- Handle dependency injection in Program.cs
+
+## API Design
+- Follow RESTful conventions
+- Use appropriate HTTP status codes
+- Implement proper request/response models
+- Add input validation using FluentValidation or Data Annotations
+- Use consistent naming conventions (camelCase for JSON)
+
+## Example Function Structure
+```csharp
+[Function("GetRentAnalysis")]
+public async Task<HttpResponseData> GetRentAnalysis(
+    [HttpTrigger(AuthorizationLevel.Function, "get", Route = "rent-analysis/{id}")] HttpRequestData req,
+    string id)
+{
+    // Delegate to service, handle errors, return proper response
+}
+```
+
+## File Naming Conventions
+- Use PascalCase for classes, interfaces, and methods
+- Prefix interfaces with 'I' (e.g., IUserService)
+- Use descriptive names that indicate purpose
+- Group related files in appropriate folders
+
+## Dependencies and Packages
+- Keep packages up to date and secure
+- Use official Microsoft packages when available
+- Avoid unnecessary dependencies
+- Document any non-standard package choices
+
+## Security
+- Use parameterized queries to prevent SQL injection
+- Implement proper authentication and authorization
+- Use secure cookie settings
+- Validate and sanitize all user inputs
+
+## Performance
+- Use async/await for I/O operations
+- Implement proper caching strategies
+- Use efficient LINQ queries
+- Profile and optimize database queries
+- Use appropriate data structures

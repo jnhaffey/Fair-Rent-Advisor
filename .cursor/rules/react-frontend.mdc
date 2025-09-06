@@ -1,0 +1,79 @@
+---
+description: React TypeScript frontend development standards
+globs: ["src/FairRentAdvisor.Web/**/*", "**/*.tsx", "**/*.ts", "**/*.jsx", "**/*.js"]
+alwaysApply: false
+---
+
+# React Frontend Development Rules
+
+## Project Structure
+- Use feature-based folder structure
+- Separate components, hooks, services, and types
+- Keep components focused and reusable
+- Use barrel exports (index.ts) for cleaner imports
+
+## Component Standards
+- Use functional components with hooks
+- Implement proper TypeScript interfaces for props
+- Use React.memo() for performance optimization when needed
+- Keep components under 200 lines when possible
+- Extract custom hooks for reusable logic
+
+## TypeScript Standards
+- Use strict TypeScript configuration
+- Define proper interfaces for all data structures
+- Use union types and enums appropriately
+- Avoid 'any' type - use proper typing
+- Use generic types for reusable components
+
+## State Management
+- Use React hooks (useState, useReducer) for local state
+- Consider Context API for shared state
+- Implement proper error boundaries
+- Use React Query/TanStack Query for server state
+
+## Styling
+- Use CSS modules or styled-components for component styling
+- Follow BEM methodology if using plain CSS
+- Implement responsive design principles
+- Use CSS custom properties for theming
+
+## Example Component Structure
+```typescript
+interface RentAnalysisProps {
+  propertyId: string;
+  onAnalysisComplete?: (result: RentAnalysis) => void;
+}
+
+export const RentAnalysisComponent: React.FC<RentAnalysisProps> = ({ 
+  propertyId, 
+  onAnalysisComplete 
+}) => {
+  // Component implementation
+};
+```
+
+## File Naming Conventions
+- Use PascalCase for component files (e.g., UserProfile.tsx)
+- Use camelCase for utility and service files
+- Use kebab-case for CSS files
+- Include file type in name when appropriate (e.g., UserProfile.types.ts)
+
+## Dependencies and Packages
+- Prefer well-maintained packages with good TypeScript support
+- Keep dependencies minimal and focused
+- Use exact versions for critical dependencies
+- Regular security audits with npm audit
+
+## Security
+- Sanitize user inputs to prevent XSS
+- Use secure HTTP headers
+- Implement proper CORS policies
+- Avoid dangerouslySetInnerHTML unless absolutely necessary
+
+## Performance
+- Use React.memo() for expensive components
+- Implement proper key props in lists
+- Avoid unnecessary re-renders
+- Use code splitting for large applications
+- Optimize bundle size

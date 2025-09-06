@@ -1,0 +1,57 @@
+---
+description: Testing standards and patterns for test files
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# Testing Standards
+
+When working in the tests directory, follow these specific testing patterns:
+
+## Test Organization
+- Follow the same folder structure as the source code being tested
+- Use descriptive test class names ending with "Tests"
+- Group related tests in nested classes or regions
+
+## Test Naming
+- Use descriptive test method names that explain the scenario
+- Follow the pattern: `MethodName_StateUnderTest_ExpectedBehavior`
+- Example: `CalculateRent_WithValidProperty_ReturnsCorrectAmount`
+
+## Test Structure
+- Follow Arrange-Act-Assert (AAA) pattern consistently
+- Use clear comments to separate AAA sections when needed
+- Keep tests focused on a single behavior
+
+## Mock and Test Data
+- Use meaningful test data that reflects real scenarios
+- Create test data builders for complex objects
+- Mock external dependencies appropriately
+- Use constants for test values to improve maintainability
+
+## Example Test Structure
+```csharp
+[Fact]
+public async Task AssessProperty_WithValidInput_ReturnsAssessment()
+{
+    // Arrange
+    var propertyData = new PropertyDataBuilder()
+        .WithPostcode("SW1A 1AA")
+        .WithBedrooms(2)
+        .WithRent(2500)
+        .Build();
+    
+    // Act
+    var result = await _assessmentService.AssessProperty(propertyData);
+    
+    // Assert
+    result.Should().NotBeNull();
+    result.Rating.Should().Be(AssessmentRating.Overpriced);
+}
+```
+
+## Test Coverage
+- Aim for 80%+ code coverage
+- Focus on business logic and critical paths
+- Test both happy path and edge cases
+- Include integration tests for API endpoints
