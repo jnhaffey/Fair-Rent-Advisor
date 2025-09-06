@@ -1,0 +1,17 @@
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Infrastructure\bin\Debug\net8.0\Microsoft.Azure.Cosmos.ServiceInterop.dll
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Infrastructure\bin\Debug\net8.0\Cosmos.CRTCompat.dll
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Infrastructure\bin\Debug\net8.0\msvcp140.dll
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Infrastructure\bin\Debug\net8.0\vcruntime140.dll
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Infrastructure\bin\Debug\net8.0\vcruntime140_1.dll
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Infrastructure\bin\Debug\net8.0\FairRentAdvisor.Infrastructure.deps.json
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Infrastructure\bin\Debug\net8.0\FairRentAdvisor.Infrastructure.dll
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Infrastructure\bin\Debug\net8.0\FairRentAdvisor.Infrastructure.pdb
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Infrastructure\obj\Debug\net8.0\FairRentAdvisor.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Infrastructure\obj\Debug\net8.0\FairRentAdvisor.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Infrastructure\obj\Debug\net8.0\FairRentAdvisor.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Infrastructure\obj\Debug\net8.0\FairRentAdvisor.Infrastructure.AssemblyInfo.cs
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Infrastructure\obj\Debug\net8.0\FairRentAdvisor.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Infrastructure\obj\Debug\net8.0\FairRentAdvisor.Infrastructure.dll
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Infrastructure\obj\Debug\net8.0\refint\FairRentAdvisor.Infrastructure.dll
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Infrastructure\obj\Debug\net8.0\FairRentAdvisor.Infrastructure.pdb
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Infrastructure\obj\Debug\net8.0\ref\FairRentAdvisor.Infrastructure.dll

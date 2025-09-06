@@ -1,0 +1,19 @@
+# Build stage
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+COPY FairRentAdvisor.sln .
+COPY src/FairRentAdvisor.Api/FairRentAdvisor.Api.csproj src/FairRentAdvisor.Api/
+COPY src/FairRentAdvisor.Core/FairRentAdvisor.Core.csproj src/FairRentAdvisor.Core/
+COPY src/FairRentAdvisor.Infrastructure/FairRentAdvisor.Infrastructure.csproj src/FairRentAdvisor.Infrastructure/
+RUN dotnet restore src/FairRentAdvisor.Api/FairRentAdvisor.Api.csproj
+COPY . .
+RUN dotnet publish src/FairRentAdvisor.Api/FairRentAdvisor.Api.csproj -c Release -o /app/publish
+
+# Runtime stage
+FROM mcr.microsoft.com/azure-functions/dotnet-isolated:4-dotnet-isolated8.0
+ENV AzureWebJobsScriptRoot=/home/site/wwwroot     AzureFunctionsJobHost__Logging__Console__IsEnabled=true
+WORKDIR /home/site/wwwroot
+COPY --from=build /app/publish .
+EXPOSE 80
+
+# Functions image already sets CMD/ENTRYPOINT

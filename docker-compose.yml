@@ -1,0 +1,63 @@
+version: '3.8'
+services:
+  cosmos-emulator:
+    image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:latest
+    ports:
+      - 8081:8081
+      - 10251:10251
+      - 10252:10252
+      - 10253:10253
+      - 10254:10254
+    environment:
+      - AZURE_COSMOS_EMULATOR_PARTITION_COUNT=10
+      - AZURE_COSMOS_EMULATOR_ENABLE_DATA_PERSISTENCE=true
+    volumes:
+      - cosmos-data:/tmp/cosmos/appdata
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - 6379:6379
+    command: redis-server --appendonly yes
+    volumes:
+      - redis-data:/data
+
+  azurite:
+    image: mcr.microsoft.com/azure-storage/azurite
+    command: azurite --blobHost 0.0.0.0 --queueHost 0.0.0.0 --tableHost 0.0.0.0
+    ports:
+      - 10000:10000
+      - 10001:10001
+      - 10002:10002
+    volumes:
+      - azurite-data:/data
+
+  api:
+    build:
+      context: .
+      dockerfile: containers/Dockerfile.api
+    environment:
+      - AzureWebJobsStorage=UseDevelopmentStorage=true
+      - COSMOS_ENDPOINT=https://cosmos-emulator:8081
+      - COSMOS_KEY=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mDGxXxG6F8E+3w8b3P5Q==
+      - REDIS_CONNECTION=redis:6379
+    ports:
+      - 7071:80
+    depends_on:
+      - azurite
+      - cosmos-emulator
+      - redis
+
+  web:
+    build:
+      context: .
+      dockerfile: containers/Dockerfile.web
+    ports:
+      - 3000:80
+    depends_on:
+      - api
+
+volumes:
+  cosmos-data:
+  redis-data:
+  azurite-data:

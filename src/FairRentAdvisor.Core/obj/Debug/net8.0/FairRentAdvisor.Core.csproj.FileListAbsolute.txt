@@ -1,0 +1,12 @@
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Core\bin\Debug\net8.0\FairRentAdvisor.Core.deps.json
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Core\bin\Debug\net8.0\FairRentAdvisor.Core.dll
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Core\bin\Debug\net8.0\FairRentAdvisor.Core.pdb
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Core\obj\Debug\net8.0\FairRentAdvisor.Core.csproj.AssemblyReference.cache
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Core\obj\Debug\net8.0\FairRentAdvisor.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Core\obj\Debug\net8.0\FairRentAdvisor.Core.AssemblyInfoInputs.cache
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Core\obj\Debug\net8.0\FairRentAdvisor.Core.AssemblyInfo.cs
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Core\obj\Debug\net8.0\FairRentAdvisor.Core.csproj.CoreCompileInputs.cache
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Core\obj\Debug\net8.0\FairRentAdvisor.Core.dll
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Core\obj\Debug\net8.0\refint\FairRentAdvisor.Core.dll
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Core\obj\Debug\net8.0\FairRentAdvisor.Core.pdb
+C:\Users\jnhaf\FairRentAdvisor\src\FairRentAdvisor.Core\obj\Debug\net8.0\ref\FairRentAdvisor.Core.dll
