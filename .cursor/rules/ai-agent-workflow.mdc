@@ -1,0 +1,49 @@
+---
+description: AI agent integration and workflow automation rules
+globs: ["AI Prompts/**/*", "docs/**/*"]
+alwaysApply: false
+---
+
+# AI Agent Integration and Workflow
+
+## Prompt Engineering
+- Provide clear, specific requirements to agents
+- Include relevant context and constraints
+- Specify expected outcomes and success criteria
+- Request code examples when helpful
+
+## Code Generation
+- Review all AI-generated code thoroughly
+- Ensure generated code follows project rules
+- Test AI-generated code comprehensively
+- Refactor if necessary to meet standards
+
+## Agent Iteration Process
+1. Product Manager Agent defines requirements
+2. Architecture Agent validates design
+3. Software Engineer Agent creates implementation prompts
+4. Cursor AI implements code following these rules
+5. Code Review Agent validates implementation
+6. QA Engineer Agent plans testing approach
+
+## Workflow Automation Rules
+
+### Prompt Documentation
+- Every prompt given to Cursor should be saved into the `AI Prompts/` folder
+- Use the naming convention: `#-Software Engineer Agent.md` (where # is the next sequential number)
+- Include the full prompt text, context, and any relevant details
+- This maintains a complete record of the AI-driven development process
+
+### Changelog Management
+- Every time changes are committed, update the `docs/changelog.md` file to reflect the changes
+- Follow the Keep a Changelog format (https://keepachangelog.com/en/1.0.0/)
+- Categorize changes as: Added, Changed, Deprecated, Removed, Fixed, Security
+- Include commit hash and date for traceability
+- Include a well worded version of the commit message
+- Move items from [Unreleased] to appropriate version sections when releasing
+
+## Code Reviews
+- All code should be reviewed before merging
+- Use the Code Review Agent for AI-assisted reviews
+- Check for security vulnerabilities
+- Verify test coverage and quality

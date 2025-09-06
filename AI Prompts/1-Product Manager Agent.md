@@ -1,21 +1,25 @@
-# -- Initial User Prompt --
+# Fair Rent Advisor - Product Manager Agent Prompts
 
-# Fair Rent Advisor - Detailed Idea Brief
+## Initial User Prompt
 
-## Problem Statement
+### Fair Rent Advisor - Detailed Idea Brief
+
+#### Problem Statement
 Renters in the UK, particularly first-time renters and those new to areas, struggle to determine if rental prices are fair. Property portals show listings but don't provide context about whether prices are reasonable compared to local market rates, property conditions, or tenant rights. This information asymmetry allows some landlords to overcharge, particularly in high-demand areas or when targeting vulnerable renters.
 
-## Solution Overview
+#### Solution Overview
+
 An AI-powered platform that analyzes rental listings in real-time and provides renters with:
+
 - Fair market value assessment for specific properties
 - Price comparison with similar properties in the area
 - Red flag detection for potentially exploitative practices
 - Negotiation guidance and scripts
 - Alternative property suggestions
 
-## How It Works
+#### How It Works
 
-### Core AI Functionality
+##### Core AI Functionality
 1. **Data Collection**: Web scraping of major UK property sites (Rightmove, Zoopla, SpareRoom, etc.)
 2. **Property Analysis**: AI processes listing details, photos, descriptions to extract key features
 3. **Market Comparison**: Machine learning models compare properties against local market data
@@ -146,7 +150,7 @@ An AI-powered platform that analyzes rental listings in real-time and provides r
 
 This detailed brief provides a comprehensive foundation for product management evaluation while staying true to your core parameters of low startup cost, social impact, and AI integration.
 
-# -- Product Manager Response --
+## Product Manager Response
 
 I'll evaluate your Fair Rent Advisor idea and transform it into a structured MVP plan. Let me start by gathering some additional context to ensure I create the most effective product requirements.
 
@@ -180,7 +184,7 @@ Once you provide the additional context above, I'll create a comprehensive MVP b
 
 Would you please answer these questions so I can create the most targeted product requirements for your Fair Rent Advisor platform?
 
-# -- User Reply Prompt --
+## User Reply Prompt
 
 1. We will be using AI Agents (Architecture, Software Engineer, QA Engineer) + myself to develop this product.
 2. No Timeline
@@ -188,7 +192,7 @@ Would you please answer these questions so I can create the most targeted produc
 4. No
 5. We do not have any existing data so will be starting from scratch. We should try to use publicly available free data first but if this data is not efficient then we may need to consider web scraping.
 
-# -- Product Manager Agent Response --
+## Product Manager Agent Response
 
 Perfect! Now I have the context I need. Let me evaluate and structure your Fair Rent Advisor idea into a comprehensive MVP plan.
 
@@ -349,445 +353,30 @@ Before I proceed to generate the agent handoff prompts, I need your confirmation
 
 Please review and let me know if you'd like any adjustments before I create the comprehensive handoff prompts for the Architecture, Software Engineer, and QA Engineer agents.
 
-# -- User Response Prompt --
+## User Response Prompt
 
 Yes that all looks good
 
-# -- Product Manager Agent Response --
+## Product Manager Agent Response (Final)
 
-Excellent! I'll now create comprehensive handoff prompts for each agent and develop UI mockups to visualize the user experience. Let me start with the UI mockups to demonstrate the key user workflows.
+Excellent! I'll now create comprehensive handoff prompts for each agent and develop UI mockups to visualize the user experience.
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fair Rent Advisor - UI Mockups</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f7fa; color: #333; }
-        
-        .mockup-container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        .mockup-section { background: white; margin: 40px 0; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); overflow: hidden; }
-        .mockup-header { background: #2563eb; color: white; padding: 20px; text-align: center; }
-        .mockup-content { padding: 30px; }
-        
-        .screen { background: #fff; border: 2px solid #e5e7eb; border-radius: 8px; padding: 20px; margin: 20px 0; }
-        .screen-title { font-size: 18px; font-weight: 600; margin-bottom: 15px; color: #1f2937; }
-        
-        /* Header styles */
-        .app-header { background: #2563eb; color: white; padding: 15px 0; text-align: center; }
-        .app-header h1 { font-size: 24px; font-weight: 700; }
-        .app-header p { opacity: 0.9; margin-top: 5px; }
-        
-        /* Form styles */
-        .property-form { background: #f8fafc; padding: 25px; border-radius: 8px; margin: 20px 0; }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; color: #374151; }
-        .form-group input, .form-group select { width: 100%; padding: 12px; border: 2px solid #d1d5db; border-radius: 6px; font-size: 16px; }
-        .form-group input:focus, .form-group select:focus { outline: none; border-color: #2563eb; }
-        
-        .btn-primary { background: #2563eb; color: white; padding: 15px 30px; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; }
-        .btn-primary:hover { background: #1d4ed8; }
-        
-        /* Assessment result styles */
-        .assessment-result { margin: 25px 0; }
-        .assessment-card { border-left: 5px solid #10b981; background: #f0fdf4; padding: 20px; border-radius: 8px; margin: 15px 0; }
-        .assessment-card.overpriced { border-left-color: #ef4444; background: #fef2f2; }
-        .assessment-card.good-deal { border-left-color: #10b981; background: #f0fdf4; }
-        
-        .assessment-badge { display: inline-block; padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; }
-        .assessment-badge.fair { background: #dbeafe; color: #1d4ed8; }
-        .assessment-badge.overpriced { background: #fee2e2; color: #dc2626; }
-        .assessment-badge.good-deal { background: #dcfce7; color: #166534; }
-        
-        .price-comparison { display: flex; justify-content: space-between; margin: 15px 0; }
-        .price-item { text-align: center; }
-        .price-value { font-size: 24px; font-weight: 700; }
-        .price-label { font-size: 12px; color: #6b7280; text-transform: uppercase; }
-        
-        /* Property list styles */
-        .property-list { margin: 25px 0; }
-        .property-item { border: 1px solid #e5e7eb; border-radius: 8px; padding: 20px; margin: 15px 0; }
-        .property-item:hover { border-color: #2563eb; }
-        .property-header { display: flex; justify-content: between; align-items: center; margin-bottom: 10px; }
-        .property-title { font-weight: 600; font-size: 16px; }
-        .property-price { font-size: 18px; font-weight: 700; color: #2563eb; }
-        .property-details { color: #6b7280; font-size: 14px; }
-        .property-tags { margin-top: 10px; }
-        .tag { display: inline-block; background: #f3f4f6; padding: 4px 8px; border-radius: 4px; font-size: 12px; margin-right: 8px; }
-        
-        /* Navigation styles */
-        .nav-tabs { display: flex; border-bottom: 2px solid #e5e7eb; margin-bottom: 20px; }
-        .nav-tab { padding: 12px 24px; cursor: pointer; border-bottom: 2px solid transparent; font-weight: 500; }
-        .nav-tab.active { border-bottom-color: #2563eb; color: #2563eb; }
-        
-        /* Area analysis styles */
-        .area-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0; }
-        .stat-card { background: #f8fafc; padding: 20px; border-radius: 8px; text-align: center; }
-        .stat-value { font-size: 28px; font-weight: 700; color: #2563eb; }
-        .stat-label { font-size: 14px; color: #6b7280; margin-top: 5px; }
-        
-        /* Negotiation tools */
-        .negotiation-section { background: #fef3c7; border: 1px solid #f59e0b; border-radius: 8px; padding: 20px; margin: 20px 0; }
-        .negotiation-suggestion { font-size: 18px; font-weight: 600; color: #92400e; margin-bottom: 10px; }
-        
-        .workflow-indicator { display: flex; align-items: center; margin: 20px 0; }
-        .step { background: #e5e7eb; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; }
-        .step.active { background: #2563eb; color: white; }
-        .step-connector { height: 2px; background: #e5e7eb; flex-grow: 1; margin: 0 10px; }
-        
-        @media (max-width: 768px) {
-            .price-comparison { flex-direction: column; gap: 15px; }
-            .area-stats { grid-template-columns: 1fr; }
-        }
-    </style>
-</head>
-<body>
-    <div class="mockup-container">
-        
-        <!-- Main Landing Page -->
-        <div class="mockup-section">
-            <div class="mockup-header">
-                <h2>Screen 1: Main Landing Page & Property Assessment</h2>
-                <p>Primary user entry point - property assessment tool</p>
-            </div>
-            <div class="mockup-content">
-                <div class="screen">
-                    <div class="app-header">
-                        <h1>Fair Rent Advisor</h1>
-                        <p>Get instant assessment of London rental prices</p>
-                    </div>
-                    
-                    <div class="property-form">
-                        <h3 style="margin-bottom: 20px; text-align: center;">Check if your rent is fair</h3>
-                        
-                        <div class="form-group">
-                            <label for="postcode">Property Postcode</label>
-                            <input type="text" id="postcode" placeholder="e.g. SW1A 1AA" value="">
-                        </div>
-                        
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                            <div class="form-group">
-                                <label for="bedrooms">Bedrooms</label>
-                                <select id="bedrooms">
-                                    <option>Studio</option>
-                                    <option>1 bedroom</option>
-                                    <option selected>2 bedrooms</option>
-                                    <option>3 bedrooms</option>
-                                    <option>4+ bedrooms</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="rent">Monthly Rent (£)</label>
-                                <input type="number" id="rent" placeholder="2500" value="">
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="property-type">Property Type</label>
-                            <select id="property-type">
-                                <option>Flat/Apartment</option>
-                                <option>House</option>
-                                <option>Studio</option>
-                                <option>Room in shared house</option>
-                            </select>
-                        </div>
-                        
-                        <button class="btn-primary">Check Fair Rent Price</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Assessment Results -->
-        <div class="mockup-section">
-            <div class="mockup-header">
-                <h2>Screen 2: Property Assessment Results</h2>
-                <p>Core value proposition - showing rent fairness assessment</p>
-            </div>
-            <div class="mockup-content">
-                <div class="screen">
-                    <div class="screen-title">Assessment Results for SW1A 1AA</div>
-                    
-                    <div class="assessment-result">
-                        <div class="assessment-card overpriced">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                                <span class="assessment-badge overpriced">OVERPRICED</span>
-                                <span style="font-size: 14px; color: #6b7280;">Confidence: 87%</span>
-                            </div>
-                            
-                            <div class="price-comparison">
-                                <div class="price-item">
-                                    <div class="price-value" style="color: #dc2626;">£2,500</div>
-                                    <div class="price-label">Your Property</div>
-                                </div>
-                                <div class="price-item">
-                                    <div class="price-value">£2,150</div>
-                                    <div class="price-label">Area Average</div>
-                                </div>
-                                <div class="price-item">
-                                    <div class="price-value" style="color: #10b981;">£2,200</div>
-                                    <div class="price-label">Fair Price</div>
-                                </div>
-                            </div>
-                            
-                            <p style="margin-top: 15px;"><strong>Analysis:</strong> This 2-bedroom flat is £350 above the area average and £300 above our fair price estimate. Similar properties in SW1A typically rent for £2,100-£2,250.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="negotiation-section">
-                        <div class="negotiation-suggestion">💡 Negotiation Opportunity</div>
-                        <p>Based on local market data, you could reasonably negotiate down to <strong>£2,200-£2,250</strong>. We estimate a <strong>65% chance of success</strong> with proper market evidence.</p>
-                        <button style="background: #f59e0b; color: white; border: none; padding: 10px 20px; border-radius: 6px; margin-top: 10px; cursor: pointer;">Get Negotiation Kit</button>
-                    </div>
-                    
-                    <div class="nav-tabs">
-                        <div class="nav-tab active">Similar Properties</div>
-                        <div class="nav-tab">Area Analysis</div>
-                        <div class="nav-tab">Negotiation Tools</div>
-                    </div>
-                    
-                    <div class="property-list">
-                        <div class="property-item">
-                            <div class="property-header">
-                                <div class="property-title">2 bed flat, Victoria Street</div>
-                                <div class="property-price">£2,100/month</div>
-                            </div>
-                            <div class="property-details">0.3 miles away • Victoria tube 2min walk • Available now</div>
-                            <div class="property-tags">
-                                <span class="tag">Better Value</span>
-                                <span class="tag">Similar Size</span>
-                            </div>
-                        </div>
-                        
-                        <div class="property-item">
-                            <div class="property-header">
-                                <div class="property-title">2 bed apartment, Buckingham Gate</div>
-                                <div class="property-price">£2,200/month</div>
-                            </div>
-                            <div class="property-details">0.5 miles away • St James Park 5min walk • Available next week</div>
-                            <div class="property-tags">
-                                <span class="tag">Better Value</span>
-                                <span class="tag">Modern</span>
-                            </div>
-                        </div>
-                        
-                        <div class="property-item">
-                            <div class="property-header">
-                                <div class="property-title">2 bed flat, Petty France</div>
-                                <div class="property-price">£2,250/month</div>
-                            </div>
-                            <div class="property-details">0.4 miles away • Multiple tube lines • Recently renovated</div>
-                            <div class="property-tags">
-                                <span class="tag">Fair Price</span>
-                                <span class="tag">Renovated</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Area Analysis -->
-        <div class="mockup-section">
-            <div class="mockup-header">
-                <h2>Screen 3: Area Market Analysis</h2>
-                <p>Detailed market intelligence for the selected area</p>
-            </div>
-            <div class="mockup-content">
-                <div class="screen">
-                    <div class="screen-title">Market Analysis: Westminster (SW1A)</div>
-                    
-                    <div class="area-stats">
-                        <div class="stat-card">
-                            <div class="stat-value">£2,150</div>
-                            <div class="stat-label">Average 2-bed rent</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-value">£1,900 - £2,400</div>
-                            <div class="stat-label">Price range</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-value">+5%</div>
-                            <div class="stat-label">Price trend (3 months)</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-value">15</div>
-                            <div class="stat-label">Properties available</div>
-                        </div>
-                    </div>
-                    
-                    <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
-                        <h4 style="margin-bottom: 15px;">Transport Premium Analysis</h4>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
-                            <div>
-                                <strong>Nearest Stations:</strong><br>
-                                • Victoria (2 min walk): +£150/month<br>
-                                • St James Park (4 min walk): +£100/month<br>
-                                • Green Park (8 min walk): +£75/month
-                            </div>
-                            <div>
-                                <strong>Journey Times:</strong><br>
-                                • Canary Wharf: 25 minutes<br>
-                                • City: 15 minutes<br>
-                                • King's Cross: 20 minutes
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div style="background: #eff6ff; border: 1px solid #2563eb; border-radius: 8px; padding: 20px;">
-                        <h4 style="color: #1d4ed8; margin-bottom: 10px;">🎯 Key Insights for SW1A</h4>
-                        <ul style="margin-left: 20px; line-height: 1.6;">
-                            <li>Premium location with excellent transport links</li>
-                            <li>Prices 15-20% above London average due to central location</li>
-                            <li>Market showing steady growth but high competition</li>
-                            <li>Properties near Victoria station command highest premiums</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Negotiation Tools -->
-        <div class="mockup-section">
-            <div class="mockup-header">
-                <h2>Screen 4: Negotiation Support Tools</h2>
-                <p>Practical tools to help users negotiate better rent</p>
-            </div>
-            <div class="mockup-content">
-                <div class="screen">
-                    <div class="screen-title">Negotiation Kit for SW1A Property</div>
-                    
-                    <div class="workflow-indicator">
-                        <div class="step active">1</div>
-                        <div class="step-connector"></div>
-                        <div class="step">2</div>
-                        <div class="step-connector"></div>
-                        <div class="step">3</div>
-                        <div class="step-connector"></div>
-                        <div class="step">4</div>
-                    </div>
-                    
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 25px 0;">
-                        <div style="background: #f0f9ff; border: 1px solid #0ea5e9; border-radius: 8px; padding: 20px;">
-                            <h4 style="color: #0369a1; margin-bottom: 15px;">📊 Your Evidence Package</h4>
-                            <ul style="margin-left: 20px; line-height: 1.6;">
-                                <li>Market average: £2,150/month</li>
-                                <li>3 comparable properties at £2,100-£2,200</li>
-                                <li>Property is 16% above fair value</li>
-                                <li>Similar properties available now</li>
-                            </ul>
-                            <button style="background: #0ea5e9; color: white; border: none; padding: 8px 16px; border-radius: 4px; margin-top: 10px; cursor: pointer;">Download Evidence Report</button>
-                        </div>
-                        
-                        <div style="background: #f0fdf4; border: 1px solid #10b981; border-radius: 8px; padding: 20px;">
-                            <h4 style="color: #059669; margin-bottom: 15px;">💬 Negotiation Script</h4>
-                            <p style="font-style: italic; margin-bottom: 10px;">"Based on my research of similar 2-bedroom properties in SW1A, the market rate appears to be £2,100-£2,200. Would you consider £2,200/month?"</p>
-                            <button style="background: #10b981; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">View Full Script</button>
-                        </div>
-                    </div>
-                    
-                    <div style="background: #fefce8; border: 1px solid #eab308; border-radius: 8px; padding: 20px;">
-                        <h4 style="color: #a16207; margin-bottom: 15px;">🎯 Negotiation Strategy</h4>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-                            <div>
-                                <strong>Target Price:</strong> £2,200/month<br>
-                                <strong>Fallback:</strong> £2,250/month<br>
-                                <strong>Success Probability:</strong> 65%
-                            </div>
-                            <div>
-                                <strong>Best Timing:</strong> Before lease signing<br>
-                                <strong>Approach:</strong> Professional with evidence<br>
-                                <strong>Backup Plan:</strong> Alternative properties ready
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-top: 25px;">
-                        <h4 style="margin-bottom: 15px;">📋 Negotiation Checklist</h4>
-                        <div style="background: white; border: 1px solid #e5e7eb; border-radius: 8px; padding: 20px;">
-                            <label style="display: block; margin: 10px 0; cursor: pointer;">
-                                <input type="checkbox"> Research completed - market evidence gathered
-                            </label>
-                            <label style="display: block; margin: 10px 0; cursor: pointer;">
-                                <input type="checkbox"> Alternative properties identified as backup
-                            </label>
-                            <label style="display: block; margin: 10px 0; cursor: pointer;">
-                                <input type="checkbox"> Professional script prepared
-                            </label>
-                            <label style="display: block; margin: 10px 0; cursor: pointer;">
-                                <input type="checkbox"> Timing planned (before signing)
-                            </label>
-                            <label style="display: block; margin: 10px 0; cursor: pointer;">
-                                <input type="checkbox"> Follow-up strategy ready
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- User Dashboard -->
-        <div class="mockup-section">
-            <div class="mockup-header">
-                <h2>Screen 5: User Dashboard (Future Enhancement)</h2>
-                <p>Personal property tracking and search management</p>
-            </div>
-            <div class="mockup-content">
-                <div class="screen">
-                    <div class="screen-title">My Property Search Dashboard</div>
-                    
-                    <div class="nav-tabs">
-                        <div class="nav-tab active">Saved Properties</div>
-                        <div class="nav-tab">Search Alerts</div>
-                        <div class="nav-tab">Assessment History</div>
-                    </div>
-                    
-                    <div style="margin: 20px 0;">
-                        <button style="background: #2563eb; color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer;">+ New Search Alert</button>
-                    </div>
-                    
-                    <div class="property-list">
-                        <div class="property-item" style="border-left: 4px solid #10b981;">
-                            <div class="property-header">
-                                <div class="property-title">2 bed flat, Victoria Street</div>
-                                <div class="property-price">£2,100/month</div>
-                            </div>
-                            <div class="property-details">Saved 2 days ago • Last checked: Today • Status: Still available</div>
-                            <div class="property-tags">
-                                <span class="tag" style="background: #dcfce7; color: #166534;">Good Deal</span>
-                                <span class="tag">Viewing Scheduled</span>
-                            </div>
-                        </div>
-                        
-                        <div class="property-item" style="border-left: 4px solid #f59e0b;">
-                            <div class="property-header">
-                                <div class="property-title">2 bed apartment, Westminster</div>
-                                <div class="property-price">£2,400/month</div>
-                            </div>
-                            <div class="property-details">Saved 1 week ago • Price changed: £2,500 → £2,400</div>
-                            <div class="property-tags">
-                                <span class="tag" style="background: #fef3c7; color: #92400e;">Price Improved</span>
-                                <span class="tag">Watching</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-</body>
-</html>
-```
+## UI Mockups Overview
+
+The UI mockups demonstrate key user workflows across 5 main screens:
+
+1. **Main Landing Page & Property Assessment** - Primary entry point with property input form
+2. **Property Assessment Results** - Core value proposition showing fairness assessment with comparable properties  
+3. **Area Market Analysis** - Detailed market intelligence with transport premiums and trends
+4. **Negotiation Support Tools** - Practical negotiation guidance with evidence packages
+5. **User Dashboard** - Personal property tracking (future enhancement)
+
+*Note: Complete HTML mockups with CSS styling have been created separately and demonstrate responsive design with mobile-first approach, assessment result badges, property comparison cards, and negotiation workflow indicators.*
 
 Now I'll create the comprehensive handoff prompts for each agent:
 
 
-# Product Requirements for Architecture Agent
+## Product Requirements for Architecture Agent
 
 ## Product Overview
 
@@ -998,7 +587,7 @@ Please provide your architectural plan in a format suitable for handoff to the S
 Your architectural decisions should prioritize rapid MVP development while maintaining scalability for future growth, all within the specified budget constraints.
 
 
-# Product Requirements for Software Engineer Agent
+## Product Requirements for Software Engineer Agent
 
 ## Product Overview
 
@@ -1292,7 +881,7 @@ Please implement this system with focus on rapid MVP delivery while maintaining 
 
 
 
-# Product Requirements for QA Engineer Agent
+## Product Requirements for QA Engineer Agent
 
 ## Product Overview
 

@@ -1,0 +1,36 @@
+---
+description: Security guidelines and best practices for the entire project
+globs: ["**/*"]
+alwaysApply: false
+---
+
+# Security Guidelines
+
+## General Security
+- Never commit secrets, API keys, or passwords
+- Use environment variables for configuration
+- Implement proper input validation and sanitization
+- Use HTTPS for all communications
+
+## Environment Configuration
+
+### Development Environment
+- Use consistent environment setup across team
+- Document required tools and versions
+- Use Docker for consistent development environment
+- Maintain separate configs for dev/staging/prod
+
+### Configuration Management
+- Use strongly-typed configuration classes in .NET
+- Use environment variables for sensitive data
+- Implement proper configuration validation
+- Document all configuration options
+
+## Security Checklist
+- [ ] No hardcoded secrets or API keys
+- [ ] Input validation implemented
+- [ ] Authentication and authorization configured
+- [ ] HTTPS enforced
+- [ ] Error messages don't leak sensitive information
+- [ ] Dependencies are up to date and secure
+- [ ] Proper logging without sensitive data
