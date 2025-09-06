@@ -530,3 +530,20 @@ appsettings.json
 local.settings.json
 *.user
 *.suo
+
+##
+## Additional Build Artifacts (Enhanced)
+##
+# Ensure all bin/obj folders are ignored regardless of depth
+**/bin/
+**/obj/
+# Additional .NET build outputs
+**/*.dll
+**/*.pdb
+**/*.exe
+# NuGet package cache
+**/.nuget/
+# Test results
+**/TestResults/
+# Coverage reports
+**/coverage/
