@@ -1,87 +1,70 @@
-- Product Manager Agent's Architucture Agent Hand-over Prompt provided
+# Fair Rent Advisor - Architecture Agent Prompts
 
-# -- Architecture Agent Response --
+## Context
 
-# Fair Rent Advisor - Technical Architecture Plan
+Product Manager Agent's Architecture Agent Hand-over Prompt provided
 
-## Architecture Overview
+## Architecture Agent Response
+
+### Fair Rent Advisor - Technical Architecture Plan
+
+#### Architecture Overview
 
 After analyzing the product requirements, I recommend a **cloud-native serverless architecture** using Azure services to optimize for the £1000 development budget and £50/month operational constraints while ensuring scalability and performance.
 
-## System Architecture Approach
+#### System Architecture Approach
 
-### Overall Pattern: Serverless Microservices Hybrid
+##### Overall Pattern: Serverless Microservices Hybrid
 - **Frontend**: React SPA hosted on Azure Static Web Apps (free tier)
 - **Backend**: .NET 8 Azure Functions for serverless compute
 - **Database**: Azure Cosmos DB (free tier) for document storage
 - **Caching**: Azure Redis Cache for market data
-- **Authentication**: Auth0 for user management## Technology Stack Recommendations
+- **Authentication**: Auth0 for user management
 
-graph TB
-    subgraph "Frontend Layer"
-        React[React SPA<br/>Azure Static Web Apps]
-    end
-    
-    subgraph "API Gateway"
-        APIM[Azure API Management<br/>Rate Limiting & Security]
-    end
-    
-    subgraph "Authentication"
-        Auth0[Auth0<br/>User Management]
-    end
-    
-    subgraph "Backend Services"
-        AssessmentAPI[Property Assessment API<br/>.NET Azure Functions]
-        MarketAPI[Market Analysis API<br/>.NET Azure Functions]
-        NegotiationAPI[Negotiation Tools API<br/>.NET Azure Functions]
-        DataAPI[Data Collection API<br/>.NET Azure Functions]
-    end
-    
-    subgraph "Data Layer"
-        CosmosDB[(Azure Cosmos DB<br/>Property & Market Data)]
-        Redis[(Azure Redis Cache<br/>Hot Market Data)]
-        BlobStorage[(Azure Blob Storage<br/>Market Reports)]
-    end
-    
-    subgraph "Data Sources"
-        GovData[Government APIs<br/>Property Data]
-        WebScraping[Ethical Web Scraping<br/>Rental Listings]
-        TransportAPI[TfL API<br/>Transport Data]
-    end
-    
-    subgraph "Background Processing"
-        DataPipeline[Azure Functions<br/>Data Processing Pipeline]
-        Timer[Timer Triggers<br/>Daily Data Updates]
-    end
-    
-    React --> APIM
-    APIM --> AssessmentAPI
-    APIM --> MarketAPI
-    APIM --> NegotiationAPI
-    React --> Auth0
-    
-    AssessmentAPI --> CosmosDB
-    AssessmentAPI --> Redis
-    MarketAPI --> CosmosDB
-    MarketAPI --> Redis
-    NegotiationAPI --> BlobStorage
-    
-    DataAPI --> CosmosDB
-    DataPipeline --> CosmosDB
-    DataPipeline --> Redis
-    Timer --> DataPipeline
-    
-    DataAPI --> GovData
-    DataAPI --> WebScraping
-    DataAPI --> TransportAPI
+##### Technology Stack Recommendations
 
-### Mandatory Stack Components
+**System Architecture Diagram:**
+
+```
+Frontend Layer:
+- React SPA (Azure Static Web Apps)
+
+API Gateway:
+- Azure API Management (Rate Limiting & Security)
+
+Authentication:
+- Auth0 (User Management)
+
+Backend Services:
+- Property Assessment API (.NET Azure Functions)
+- Market Analysis API (.NET Azure Functions)
+- Negotiation Tools API (.NET Azure Functions)
+- Data Collection API (.NET Azure Functions)
+
+Data Layer:
+- Azure Cosmos DB (Property & Market Data)
+- Azure Redis Cache (Hot Market Data)
+- Azure Blob Storage (Market Reports)
+
+Data Sources:
+- Government APIs (Property Data)
+- Ethical Web Scraping (Rental Listings)
+- TfL API (Transport Data)
+
+Background Processing:
+- Azure Functions (Data Processing Pipeline)
+- Timer Triggers (Daily Data Updates)
+```
+
+##### Mandatory Stack Components
+
 - **Backend**: .NET 8 with Azure Functions (serverless)
 - **Frontend**: React 18 with TypeScript
 - **Authentication**: Auth0 (free tier supports 7,000 active users)
 - **Cloud Platform**: Microsoft Azure
 
-### Database Strategy
+##### Database Strategy
+
 - **Primary Database**: Azure Cosmos DB (free tier: 1000 RU/s, 25GB storage)
   - Document-based storage perfect for property data with varying attributes
   - Global distribution for performance
@@ -90,20 +73,22 @@ graph TB
   - Cache market averages and frequently accessed data
   - Reduce Cosmos DB RU consumption
 
-### Infrastructure Components
+##### Infrastructure Components
+
 - **Hosting**: Azure Static Web Apps (free tier)
 - **API Management**: Azure API Management (free tier: 1M calls/month)
 - **Storage**: Azure Blob Storage (hot tier for reports)
 - **Monitoring**: Azure Application Insights (free tier)
 
-## Detailed Technical Specifications
+#### Detailed Technical Specifications
 
-### API Design Structure
-# Fair Rent Advisor API Endpoints
+##### API Design Structure
 
-## Property Assessment API
+###### Fair Rent Advisor API Endpoints
 
-### POST /api/property/assess
+**Property Assessment API**
+
+**POST /api/property/assess**
 **Purpose**: Assess if a rental price is fair
 ```json
 {
@@ -412,59 +397,43 @@ graph TB
 - **Users**: Keep until account deletion
 
 ### Security Architecture
-graph TB
-    subgraph "Client Security"
-        Browser[Web Browser]
-        HTTPS[HTTPS/TLS 1.3]
-        CSP[Content Security Policy]
-    end
-    
-    subgraph "Authentication Layer"
-        Auth0[Auth0 Identity Provider]
-        JWT[JWT Tokens]
-        Refresh[Refresh Token Rotation]
-    end
-    
-    subgraph "API Security"
-        APIM[Azure API Management]
-        RateLimit[Rate Limiting]
-        CORS[CORS Policy]
-        Auth[JWT Validation]
-    end
-    
-    subgraph "Application Security"
-        Functions[Azure Functions]
-        InputVal[Input Validation]
-        OutputSan[Output Sanitization]
-        Secrets[Azure Key Vault]
-    end
-    
-    subgraph "Data Security"
-        CosmosDB[(Cosmos DB)]
-        Encryption[Encryption at Rest]
-        RBAC[Role-Based Access]
-        Backup[Encrypted Backups]
-    end
-    
-    subgraph "Network Security"
-        VNet[Virtual Network]
-        NSG[Network Security Groups]
-        WAF[Web Application Firewall]
-    end
-    
-    Browser --> HTTPS
-    HTTPS --> Auth0
-    Auth0 --> JWT
-    JWT --> APIM
-    APIM --> RateLimit
-    APIM --> Auth
-    Auth --> Functions
-    Functions --> InputVal
-    Functions --> Secrets
-    Functions --> CosmosDB
-    CosmosDB --> Encryption
-    Functions --> VNet
-    VNet --> NSG
+
+**Security Layers:**
+
+```
+Client Security:
+- Web Browser
+- HTTPS/TLS 1.3
+- Content Security Policy
+
+Authentication Layer:
+- Auth0 Identity Provider
+- JWT Tokens
+- Refresh Token Rotation
+
+API Security:
+- Azure API Management
+- Rate Limiting
+- CORS Policy
+- JWT Validation
+
+Application Security:
+- Azure Functions
+- Input Validation
+- Output Sanitization
+- Azure Key Vault
+
+Data Security:
+- Cosmos DB
+- Encryption at Rest
+- Role-Based Access
+- Encrypted Backups
+
+Network Security:
+- Virtual Network
+- Network Security Groups
+- Web Application Firewall
+```
 
 ## Cost Analysis & Optimization Strategy
 
@@ -576,11 +545,12 @@ The architecture is designed to:
 
 Would you like me to generate the detailed Software Engineer Agent prompt with specific implementation instructions for Phase 1?
 
-# -- User Response Prompt --
+## User Response Prompt
 Yes
 
-# -- Architecture Agent Response --
-# Technical Architecture Plan for Software Engineer Agent
+## Architecture Agent Response (Final)
+
+### Technical Architecture Plan for Software Engineer Agent
 
 ## Project Overview
 **Fair Rent Advisor** is an AI-powered platform that helps London renters instantly assess if rental prices are fair by providing market analysis and negotiation guidance through a web platform. The MVP targets young professional renters (22-35) seeking 1-2 bed properties in London with a development budget under £1000 and operational costs under £50/month.
