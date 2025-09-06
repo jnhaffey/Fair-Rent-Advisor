@@ -1,0 +1,44 @@
+---
+description: Fair Rent Advisor project context and general principles
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# Fair Rent Advisor Project Context
+
+This is an AI-driven SaaS project using .NET 8 backend (Azure Functions) and React TypeScript frontend. The development process follows an agent-based workflow where Claude agents generate implementation prompts for Cursor AI to execute.
+
+## General Principles
+
+### Code Quality
+- Write clean, readable, and maintainable code
+- Follow SOLID principles and clean architecture patterns
+- Prefer composition over inheritance
+- Use meaningful variable and method names
+- Add comments only when necessary to explain "why", not "what"
+- Keep functions and classes focused on single responsibilities
+
+### Testing
+- Write unit tests for all business logic
+- Aim for high test coverage (80%+)
+- Use descriptive test names that explain the scenario
+- Follow Arrange-Act-Assert pattern in tests
+- Mock external dependencies appropriately
+
+### Error Handling
+- Use proper exception handling with specific exception types
+- Log errors with appropriate context and severity levels
+- Provide meaningful error messages to users
+- Handle edge cases gracefully
+
+### Git Practices
+- Use conventional commit messages (feat:, fix:, docs:, etc.)
+- Keep commits focused and atomic
+- Write descriptive commit messages
+- Use feature branches for development
+
+### Documentation
+- Update README.md for significant changes
+- Document API endpoints with proper examples
+- Keep architectural decisions recorded
+- Update changelog for releases
