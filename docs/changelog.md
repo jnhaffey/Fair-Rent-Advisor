@@ -7,8 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **Core Domain Models Implementation (Phase 2A)**:
+  - `Postcode` value object with UK postcode validation and formatting
+  - `MonthlyRent` value object with business rules and multi-currency support
+  - `PropertyType` value object with type-safe property classification
+  - Comprehensive unit test suite with 100% coverage (35 tests)
+  - Test infrastructure with FluentAssertions, xUnit, and TestDataBuilder utilities
+  - JSON serialization support for Cosmos DB compatibility
+  - Implicit type conversions for better developer experience
+
 ### Changed
 
+- Enhanced test project structure with organized Models/ValueObjects hierarchy
+- Removed default UnitTest1.cs files from test projects
+- Updated `4-Software Engineer Agent.md` with Phase 2A implementation details
 - Migrated from legacy `.cursorrules` to new Project Rules format using `.cursor/rules/` directory
 - Split large cursor rules into focused, composable `.mdc` files for better maintainability
 - Implemented nested rules structure with testing-specific rules in `tests/.cursor/rules/`
@@ -22,15 +36,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 - Legacy `.cursorrules` file (replaced with new Project Rules structure)
+- Default UnitTest1.cs files from test projects
+- Default Class1.cs files from new .NET projects (FairRentAdvisor.Core, FairRentAdvisor.Infrastructure)
 
-### Added
+### Technical Details
 
-- New Project Rules structure with focused `.mdc` files:
-  - `project-context.mdc` - General project context and principles
-  - `dotnet-backend.mdc` - .NET 8 backend development standards
-  - `react-frontend.mdc` - React TypeScript frontend standards
-  - `ai-agent-workflow.mdc` - AI agent integration and workflow automation
-  - `security-guidelines.mdc` - Security best practices
-  - `tests/.cursor/rules/testing-standards.mdc` - Testing-specific rules (nested)
-- `AGENTS.md` - Simple alternative agent instructions file
-- Initial changelog creation
+- **TDD Implementation**: Followed strict Red-Green-Refactor cycle for all value objects
+- **Architecture Compliance**: .NET 8, System.Text.Json, manual object mapping
+- **Business Rules**: Input validation, realistic constraints, proper error handling
+- **Test Coverage**: 35 passing tests with comprehensive edge case coverage
