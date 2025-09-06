@@ -2,6 +2,10 @@
 
 An experiment in building an end-to-end SaaS using AI-first tooling and workflows.
 
+### AI Tools Used
+- **Claude Sonnet 4** (via Claude.ai) — Prompt generation and agent-based workflow management
+- **Claude Sonnet 4** (via Cursor AI) — Code generation, editing, and implementation
+
 ### Vision
 This project is an attempt to build a complete SaaS product using mostly AI tooling. It documents and demonstrates a practical, repeatable way to combine multiple specialized AI agents with a coding assistant to ship production-quality software quickly.
 
