@@ -30,7 +30,7 @@ alwaysApply: false
 
 ### Prompt Documentation
 - Every prompt given to Cursor should be saved into the `AI Prompts/` folder
-- Use the naming convention: `#-Software Engineer Agent.md` (where # is the next sequential number)
+- Use the naming convention: `#-{AGENT-TYPE}.md` (where # is the next sequential number AND {AGENT-TYPE} is the AGENT TYPE provided in the prompt)
 - Include the full prompt text, context, and any relevant details
 - This maintains a complete record of the AI-driven development process
 

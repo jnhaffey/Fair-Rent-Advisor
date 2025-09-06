@@ -76,6 +76,23 @@ public class PostcodeTests
         postcode.Value.Should().Be("SW1A 1AA");
     }
 
+    [Theory]
+    [InlineData("M1 1AA", "M11AA")]  // Input with space becomes normalized without space
+    [InlineData("B1 1AA", "B11AA")]  // Input with space becomes normalized without space  
+    [InlineData("M11AA", "M11AA")]   // Input without space stays without space
+    [InlineData("b11aa", "B11AA")]   // Case normalized, no space added
+    public void Constructor_ShortPostcode_DoesNotAddSpace(string input, string expected)
+    {
+        // Arrange & Act
+        var postcode = new Postcode(input);
+        
+        // Assert
+        postcode.Value.Should().Be(expected);
+        
+        // Note: OutwardCode and InwardCode properties will fail for short postcodes
+        // This test documents the current behavior (lines 31-33 in Postcode.cs)
+    }
+
     [Fact]
     public void Equals_SamePostcode_ReturnsTrue()
     {

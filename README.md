@@ -80,6 +80,7 @@ Prerequisites:
 - Node.js 18+ (Node 20 recommended)
 - npm or pnpm (examples use npm)
 - Azure Functions Core Tools v4 (for running the Functions API locally)
+- Docker & Docker Compose (for local emulators)
 
 Clone and restore:
 
@@ -88,6 +89,29 @@ git clone <this-repo>
 cd <this-repo>
 dotnet restore FairRentAdvisor.sln
 ```
+
+### Quick Start with Scripts
+
+Use the convenience scripts in the `scripts/` directory:
+
+```bash
+# Start local development environment (emulators)
+./scripts/start-local.sh        # Linux/macOS
+# or
+scripts\start-local.bat         # Windows
+
+# Build everything
+./scripts/build-all.sh          # Linux/macOS
+# or  
+scripts\build-all.bat           # Windows
+
+# Run tests with coverage
+./scripts/test-with-coverage.sh # Linux/macOS
+# or
+scripts\test-with-coverage.bat  # Windows
+```
+
+### Manual Setup
 
 Run the API (Azure Functions, isolated):
 
@@ -108,7 +132,7 @@ npm run dev
 Run tests:
 
 ```bash
-dotnet test FairRentAdvisor.sln
+dotnet test FairRentAdvisor.sln --collect:"XPlat Code Coverage"
 ```
 
 ---
